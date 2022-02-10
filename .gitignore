@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+MyCarGame/.vs/
+
+MyCarGame/obj/
+
+MyCarGame/bin/
