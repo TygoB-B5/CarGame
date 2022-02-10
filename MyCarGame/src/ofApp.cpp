@@ -18,13 +18,13 @@ void ofApp::draw()
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
 {
-	m_Game.KeyPressed(key);
+	m_Game.KeyPressed((char)key);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key)
 {
-	m_Game.KeyReleased(key);
+	m_Game.KeyReleased((char)key);
 }
 
 //--------------------------------------------------------------
@@ -49,4 +49,9 @@ void ofApp::mousePressed(int x, int y, int button)
 void ofApp::mouseReleased(int x, int y, int button)
 {
 	m_Game.MouseReleased(x, y, button);
+}
+
+void ofApp::mouseEntered(int x, int y)
+{
+	m_Game.MouseEntered(x, y);
 }

@@ -184,6 +184,10 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Input\DebugController.cpp" />
+    <ClCompile Include="src\Core\Input\OscController.cpp" />
+    <ClCompile Include="src\Core\Time.cpp" />
+    <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxBaseGui.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxButton.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxColorPicker.cpp" />
@@ -211,13 +215,15 @@
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\Input\OscController.cpp" />
-    <ClCompile Include="src\Input\PcController.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\Input\Controller.h" />
+    <ClInclude Include="src\Core\Input\DebugController.h" />
+    <ClInclude Include="src\Core\Input\OscController.h" />
+    <ClInclude Include="src\Core\Time.h" />
+    <ClInclude Include="src\Game.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxBaseGui.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxButton.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxColorPicker.h" />
@@ -258,10 +264,6 @@
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
-    <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Input\Controller.h" />
-    <ClInclude Include="src\Input\OscController.h" />
-    <ClInclude Include="src\Input\PcController.h" />
     <ClInclude Include="src\ofApp.h" />
   </ItemGroup>
   <ItemGroup>

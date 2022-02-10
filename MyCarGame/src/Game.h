@@ -1,9 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "Input/Controller.h"
+#include "Core/Input/OscController.h"
+#include "Core/Input/DebugController.h"
 
-#define ENABLE_PC_CONTROLLER 0
+#define ENABLE_DEBUG_CONTROLLER 1
 
 namespace CarGame
 {
@@ -14,12 +15,13 @@ namespace CarGame
 		void Update();
 		void Draw();
 
-		void KeyPressed(int key);
-		void KeyReleased(int key);
+		void KeyPressed(char key);
+		void KeyReleased(char key);
 		void MouseMoved(int x, int y);
 		void MouseDragged(int x, int y, int button);
 		void MousePressed(int x, int y, int button);
 		void MouseReleased(int x, int y, int button);
+		void MouseEntered(int x, int y);
 
 	private:
 		std::shared_ptr<Input::Controller> m_Controller;

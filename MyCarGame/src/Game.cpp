@@ -1,43 +1,46 @@
 #include "Game.h"
 
-#include "Input/OscController.h"
-#include "Input/PcController.h"
+#include "Core/Time.h"
 
 namespace CarGame
 {
 	ofBoxPrimitive box;
 	ofEasyCam camera;
 
-
 	void Game::Setup()
 	{
-#if ENABLE_PC_CONTROLLER  
-		m_Controller = std::make_shared<Input::OscController>();
+#if ENABLE_DEBUG_CONTROLLER  
+		m_Controller = std::make_shared<Input::DebugController>();
 #else
-		m_Controller = std::make_shared<Input::PcController>();
+		m_Controller = std::make_shared<Input::OscController>();
 #endif
 	}
 
 	void Game::Update()
 	{
-
+		m_Controller->Poll();
+		Time::TimeData::Tick();
 	}
+
+	ofVec3f pos;
 
 	void Game::Draw()
 	{
+		pos += m_Controller->GetAcceleration() * Time::TimeData::GetDeltaTime() * 700;
 		camera.begin();
-		box.rotate(ofGetElapsedTimef(), 1.0, 0.0, 0.0);
-		box.rotate(ofGetElapsedTimef(), 0, 1.0, 0.0);
+		box.rotate(Time::TimeData::GetElapsedTime(), 1.0, 0.0, 0.0);
+		box.rotate(Time::TimeData::GetElapsedTime(), 0, 1.0, 0.0);
+		box.setPosition(pos.x, -pos.y, -1000);
 		box.draw();
 		camera.end();
 	}
 
-	void Game::KeyPressed(int key)
+	void Game::KeyPressed(char key)
 	{
 		m_Controller->KeyPressedEvent(key);
 	}
 
-	void Game::KeyReleased(int key)
+	void Game::KeyReleased(char key)
 	{
 		m_Controller->KeyReleasedEvent(key);
 	}
@@ -57,5 +60,10 @@ namespace CarGame
 
 	void Game::MouseReleased(int x, int y, int button)
 	{
+	}
+
+	void Game::MouseEntered(int x, int y)
+	{
+		m_Controller->ResetAcceleration();
 	}
 }
