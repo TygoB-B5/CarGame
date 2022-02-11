@@ -19,40 +19,40 @@ namespace Input
 			switch (key)
 			{
 #if ORI_X_PLUS_BTN
-			case ORI_X_PLUS_BTN: m_Orientation.x += ORI_SPEED;
+			case ORI_X_PLUS_BTN: m_Orientation.x += ORI_SPEED; break;
 #endif
 #if ORI_X_PLUS_BTN
-			case ORI_X_PLUS_BTN: m_Orientation.x -= ORI_SPEED;
+			case ORI_X_PLUS_BTN: m_Orientation.x -= ORI_SPEED; break;
 #endif
 #if ORI_Y_MIN_BTN
-			case ORI_Y_MIN_BTN:    m_Orientation.y += ORI_SPEED;
+			case ORI_Y_MIN_BTN:    m_Orientation.y += ORI_SPEED; break;
 #endif
 #if ORI_Y_PLUS_BTN
-			case ORI_Y_PLUS_BTN:   m_Orientation.y -= ORI_SPEED;
+			case ORI_Y_PLUS_BTN:   m_Orientation.y -= ORI_SPEED; break;
 #endif
 #if ORI_Z_MIN_BTN
-			case ORI_Z_MIN_BTN:  m_Orientation.z += ORI_SPEED;
+			case ORI_Z_MIN_BTN:  m_Orientation.z += ORI_SPEED; break;
 #endif
 #if ORI_Z_PLUS_BTN
-			case ORI_Z_PLUS_BTN: m_Orientation.z -= ORI_SPEED;
+			case ORI_Z_PLUS_BTN: m_Orientation.z -= ORI_SPEED; break;
 #endif
 #if ACC_X_PLUS_BTN
-			case ACC_X_PLUS_BTN: m_NewAcceleration.x += ACC_SPEED;
+			case ACC_X_PLUS_BTN: m_NewAcceleration.x += ACC_SPEED; break;
 #endif
 #if ACC_X_MIN_BTN
-			case ACC_X_MIN_BTN:  m_NewAcceleration.x -= ACC_SPEED;
+			case ACC_X_MIN_BTN:  m_NewAcceleration.x -= ACC_SPEED; break;
 #endif
 #if ACC_Y_PLUS_BTN
-			case ACC_Y_PLUS_BTN: m_NewAcceleration.y += ACC_SPEED;
+			case ACC_Y_PLUS_BTN: m_NewAcceleration.y += ACC_SPEED; break;
 #endif
 #if ACC_Y_MIN_BTN
-			case ACC_Y_MIN_BTN:  m_NewAcceleration.y -= ACC_SPEED;
+			case ACC_Y_MIN_BTN:  m_NewAcceleration.y -= ACC_SPEED; break;
 #endif
 #if ACC_Z_PLUS_BTN
-			case ACC_Z_PLUS_BTN: m_NewAcceleration.z += ACC_SPEED;
+			case ACC_Z_PLUS_BTN: m_NewAcceleration.z += ACC_SPEED; break;
 #endif
 #if ACC_Z_MIN_BTN
-			case ACC_Z_MIN_BTN:  m_NewAcceleration.z -= ACC_SPEED;
+			case ACC_Z_MIN_BTN:  m_NewAcceleration.z -= ACC_SPEED; break;
 #endif
 			}
 		}

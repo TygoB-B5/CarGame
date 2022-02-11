@@ -22,15 +22,11 @@ namespace CarGame
 		m_Controller->Poll();
 	}
 
-	ofVec3f pos;
 
 	void Game::Draw()
 	{
-		pos += m_Controller->GetAcceleration() * Time::TimeData::GetDeltaTime() * 700;
 		camera.begin();
-		box.rotate(Time::TimeData::GetElapsedTime(), 1.0, 0.0, 0.0);
-		box.rotate(Time::TimeData::GetElapsedTime(), 0, 1.0, 0.0);
-		box.setPosition(pos.x, -pos.y, -1000);
+		box.setPosition(-m_Controller->GetOrientation().y * 3, 0, -1000);
 		box.draw();
 		camera.end();
 	}

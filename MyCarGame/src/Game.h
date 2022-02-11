@@ -4,7 +4,7 @@
 #include "Core/Input/OscController.h"
 #include "Core/Input/DebugController.h"
 
-#define ENABLE_DEBUG_CONTROLLER 0
+#define ENABLE_DEBUG_CONTROLLER 1
 
 namespace CarGame
 {
