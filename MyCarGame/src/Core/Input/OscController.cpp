@@ -2,6 +2,11 @@
 
 namespace Input
 {
+    OscController::OscController()
+    {
+        Setup();
+    }
+
     void OscController::Setup()
     {
         m_Osc.setup(PORT);

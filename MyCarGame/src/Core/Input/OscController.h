@@ -9,9 +9,11 @@
 #define ACC_MSG_NAME_X "/acc/x"
 #define ACC_MSG_NAME_Y "/acc/y"
 #define ACC_MSG_NAME_Z "/acc/z"
+
 #define ORI_MSG_NAME_X "/ori/x"
 #define ORI_MSG_NAME_Y "/ori/y"
 #define ORI_MSG_NAME_Z "/ori/z"
+
 #define PROX_MSG_NAME "/prox"
 
 namespace Input
@@ -19,6 +21,8 @@ namespace Input
 	class OscController : public Controller
 	{
 	public:
+		OscController();
+
 		virtual void Setup() override;
 		virtual void Poll() override;
 		virtual ofVec3f GetAcceleration() const override { return m_Acceleration; };

@@ -18,8 +18,8 @@ namespace CarGame
 
 	void Game::Update()
 	{
-		m_Controller->Poll();
 		Time::TimeData::Tick();
+		m_Controller->Poll();
 	}
 
 	ofVec3f pos;

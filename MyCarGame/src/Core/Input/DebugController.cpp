@@ -2,6 +2,11 @@
 
 namespace Input
 {
+	DebugController::DebugController()
+	{
+		Setup();
+	}
+
 	void DebugController::Setup()
 	{
 		ResetAcceleration();

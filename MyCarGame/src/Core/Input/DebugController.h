@@ -46,6 +46,8 @@ namespace Input
 	class DebugController : public Controller
 	{
 	public:
+		DebugController();
+
 		virtual void Setup() override;
 		virtual void Poll() override;
 
