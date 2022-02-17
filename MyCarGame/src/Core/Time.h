@@ -2,12 +2,12 @@
 
 #include "ofMain.h"
 
-namespace Time
+namespace Core
 {
-	class TimeData
+	class Time
 	{
 	public:
-		TimeData() : m_TimeStep(1), m_DeltaTime(0), m_OldTime(0), m_ElapsedTime(0), m_Frames(0), m_ElapsedRealTime(0), m_FrameTime(0) {}
+		Time() : m_TimeStep(1), m_DeltaTime(0), m_OldTime(0), m_ElapsedTime(0), m_Frames(0), m_ElapsedRealTime(0), m_FrameTime(0) {}
 
 		// Returns time in between frames in seconds.
 		static float GetDeltaTime() { return s_Time->GetDeltaTimeImpl(); }
@@ -41,7 +41,7 @@ namespace Time
 		void SetTimeStepImpl(float timeStep);
 
 	private:
-		static TimeData* s_Time;
+		static Time* s_Time;
 
 		float m_DeltaTime;
 		float m_ElapsedTime;

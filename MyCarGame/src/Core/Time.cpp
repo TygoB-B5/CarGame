@@ -1,11 +1,11 @@
 #include "Time.h"
 
-namespace Time
+namespace Core
 {
-	TimeData* TimeData::s_Time = new TimeData();
+	Time* Time::s_Time = new Time();
 
-	void TimeData::TickImpl()
-	{
+	void Time::TickImpl()
+	{	
 		float currentTime = ofGetElapsedTimef();
 		float newTime = currentTime;
 		float frameTime = newTime - m_OldTime;
@@ -17,7 +17,7 @@ namespace Time
 		m_OldTime = newTime;
 	}
 
-	void TimeData::SetTimeStepImpl(float timeStep)
+	void Time::SetTimeStepImpl(float timeStep)
 	{
 		m_TimeStep = timeStep;
 	}
