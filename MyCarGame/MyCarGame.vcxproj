@@ -187,6 +187,8 @@
     <ClCompile Include="src\Core\Input\DebugController.cpp" />
     <ClCompile Include="src\Core\Input\OscController.cpp" />
     <ClCompile Include="src\Core\Random.cpp" />
+    <ClCompile Include="src\Core\Renderer\Camera.cpp" />
+    <ClCompile Include="src\Core\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Core\Time.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxBaseGui.cpp" />
@@ -224,6 +226,8 @@
     <ClInclude Include="src\Core\Input\DebugController.h" />
     <ClInclude Include="src\Core\Input\OscController.h" />
     <ClInclude Include="src\Core\Random.h" />
+    <ClInclude Include="src\Core\Renderer\Camera.h" />
+    <ClInclude Include="src\Core\Renderer\Renderer.h" />
     <ClInclude Include="src\Core\Time.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxBaseGui.h" />

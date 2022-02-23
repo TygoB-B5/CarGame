@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "Core/Input/OscController.h"
 #include "Core/Input/DebugController.h"
+#include "Core/Renderer/Camera.h"
+
 
 #define ENABLE_DEBUG_CONTROLLER 1
 
@@ -25,5 +27,8 @@ namespace CarGame
 
 	private:
 		std::shared_ptr<Input::Controller> m_Controller;
+		std::shared_ptr<Core::Camera> m_Camera;
+		glm::vec3 m_CameraPos = { 0, 0, 0 };
+
 	};
 }

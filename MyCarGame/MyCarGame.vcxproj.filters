@@ -89,6 +89,8 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\Core\Random.cpp" />
+    <ClCompile Include="src\Core\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Core\Renderer\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -262,6 +264,8 @@
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Core\Random.h" />
+    <ClInclude Include="src\Core\Renderer\Renderer.h" />
+    <ClInclude Include="src\Core\Renderer\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
