@@ -19,7 +19,8 @@ namespace CarGame
 		m_Controller = std::make_shared<Input::OscController>();
 #endif
 
-		m_Objects.push_back(Core::Object(Core::ModelLoader::Load("Assets/floor.txt")));
+		m_Objects.push_back(Core::Object(Core::ModelLoader::Load("../Assets/floor.txt")));
+		m_Objects.push_back(Core::Object(Core::ModelLoader::Load("../Assets/spaceship.txt")));
 
 		{
 			for (size_t i = 0; i < 1000; i++)

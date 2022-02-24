@@ -2,22 +2,21 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include <array>
 #include "glm/glm.hpp"
 
 namespace Core
 {
 	std::vector<Quad> Core::ModelLoader::Load(const std::string& filePath)
 	{
-		// Open file
+		// Open file.
 		std::fstream file;
 		file.open(filePath.c_str());
 
-		// Check if file is succesfully opened
+		// Check if file is succesfully opened.
 		if (!file.is_open())
 			std::cout << "File not found - " << filePath;
 
-		// Write words to string vector
+		// Write words to string vector.
 		std::string word;
 		std::vector<std::string> words;
 		while (file >> word)
@@ -25,7 +24,7 @@ namespace Core
 		
 		file.close();
 
-		// Create quads and convert string to float
+		// Create quads and convert string to float.
 		std::vector<Quad> quads;
 		for (size_t i = 0; i < words.size(); i += 16)
 		{
