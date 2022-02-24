@@ -186,6 +186,8 @@
   <ItemGroup>
     <ClCompile Include="src\Core\Input\DebugController.cpp" />
     <ClCompile Include="src\Core\Input\OscController.cpp" />
+    <ClCompile Include="src\Core\ModelLoader.cpp" />
+    <ClCompile Include="src\Core\Object.cpp" />
     <ClCompile Include="src\Core\Random.cpp" />
     <ClCompile Include="src\Core\Renderer\Camera.cpp" />
     <ClCompile Include="src\Core\Renderer\Renderer.cpp" />
@@ -225,6 +227,8 @@
     <ClInclude Include="src\Core\Input\Controller.h" />
     <ClInclude Include="src\Core\Input\DebugController.h" />
     <ClInclude Include="src\Core\Input\OscController.h" />
+    <ClInclude Include="src\Core\ModelLoader.h" />
+    <ClInclude Include="src\Core\Object.h" />
     <ClInclude Include="src\Core\Random.h" />
     <ClInclude Include="src\Core\Renderer\Camera.h" />
     <ClInclude Include="src\Core\Renderer\Renderer.h" />
