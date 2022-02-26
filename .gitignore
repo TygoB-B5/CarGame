@@ -22,8 +22,10 @@
 *.out
 *.app
 
-MyCarGame/.vs/
+MySpaceShooter/.vs/
 
-MyCarGame/obj/
+MySpaceShooter/obj/
 
-MyCarGame/bin/
+MySpaceShooter/bin/
+
+
