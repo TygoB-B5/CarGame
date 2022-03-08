@@ -1,128 +1,78 @@
 #include "Game.h"
 
-#include "Core/Time.h"
-#include "Core/Random.h"
-#include "Core/Renderer/Renderer.h"
-#include "Core/ModelLoader.h"
-
 namespace CarGame
 {
 	void Game::Setup()
 	{
 		Core::Renderer::Init();
+		Input::OscServer::Init();
 
-		m_Camera = std::make_shared<Core::Camera>(90, (float)ofGetWidth() / (float)ofGetHeight(), 0.1f, 10000);
+		// Craete and assign Spaceship objects
+		std::shared_ptr<Core::Object> spec1 = std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/spaceship1.txt"));
+		std::shared_ptr<Core::Object> spec2 = std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/spaceship2.txt"));
+		spec1->SetScale({ 3.0f, 3.0f, 3.0f });
+		spec2->SetScale({ 3.0f, 3.0f, 3.0f });
+		// Assign player data
+		m_Players[0] = PlayerParams(0,
+			std::make_shared<Input::OscController>(0),
+			std::make_shared<Core::Camera>(50, ((float)ofGetWidth() / 2) / (float)ofGetHeight(), 0.01f, 10000),
+			spec2,
+			Core::ViewportParams(0, 0, (float)ofGetWidth() / 2, (float)ofGetHeight()));
 
-#if ENABLE_DEBUG_CONTROLLER 
-		m_Controller = std::make_shared<Input::DebugController>();
-#else
-		m_Controller = std::make_shared<Input::OscController>();
-#endif
+		m_Players[1] = PlayerParams(1,
+			std::make_shared<Input::OscController>(1),
+			std::make_shared<Core::Camera>(60, ((float)ofGetWidth() / 2) / (float)ofGetHeight(), 0.01f, 10000),
+			spec1,
+			Core::ViewportParams((float)ofGetWidth() / 2, 0, (float)ofGetWidth() / 2, (float)ofGetHeight()));
 
-		m_Objects.push_back(Core::Object(Core::ModelLoader::Load("../Assets/floor.txt")));
-		m_Objects.push_back(Core::Object(Core::ModelLoader::Load("../Assets/spaceship.txt")));
-
-		{
-			for (size_t i = 0; i < 1000; i++)
-			{
-
-				glm::vec4 color = { 100, 100, 100, 225 };
-				if (i % 2 == 0)
-					color = { 70, 70, 70, 225 };
-
-
-				std::array<glm::vec3, 4> poses2;
-				poses2[0] = { -50 , 0, 0 + (25 * i) };
-				poses2[1] = { 50 , 0, 0 + (25 * i) };
-				poses2[2] = { 50, 0, 25 + (25 * i) };
-				poses2[3] = { -50, 0, 25 + (25 * i) };
-
-				Core::Quad quad(poses2, color);
-
-				m_Objects.push_back(Core::Object(quad));
-			}
-		}
-
-
+		// Create floor object & Push objects to Render list
+		m_Objects.push_back(std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/floor.txt")));
+		m_Objects.push_back(spec2);
+		m_Objects.push_back(spec1);
 	}
 
 	void Game::Update()
 	{
+		// Update time tick
 		Core::Time::Tick();
-		m_Controller->Poll();
+		Input::OscServer::Update();
 	}
 
 	void Game::Draw()
 	{
 		Core::Renderer::Clear(glm::vec4(153, 255, 225, 225));
 
-		m_Camera->SetRotation(m_CameraRot);
-		m_Camera->SetPosition(m_CameraPos);
+		// Loop through all players
+		for (auto& player : m_Players)
+		{
 
-		Core::Renderer::Begin(*m_Camera);
+			// Calculate Rotation with deadzone
+			Input::Controller* cont = player.Controller.get();
+			glm::vec3 rotation =
+				glm::length(glm::vec3(cont->GetOrientation().z, -cont->GetOrientation().x, 0)) > 5 ?
+				glm::vec3(cont->GetOrientation().z, -cont->GetOrientation().x, 0) : glm::vec3(0, 0, 0);
 
-		for (auto& obj : m_Objects)
-			obj.Update();
+			// Update spaceship position and rotation
+			player.SpaceShip->Rotate(rotation * Core::Time::GetDeltaTime());
+			player.SpaceShip->Translate(player.SpaceShip->GetForward() * Core::Time::GetDeltaTime() * 250);
 
-		Core::Renderer::End();
-	}
+			// Update camera position and rotation
+			glm::vec3 rot = player.SpaceShip->GetRotation();
+			rot.y += 180;
+			rot.x = -rot.x;
 
-	void Game::KeyPressed(char key)
-	{
-		float dt = Core::Time::GetDeltaTime();
-		if (key == 'w')
-			m_CameraPos.y+=100*dt;
-		if (key == 's')
-			m_CameraPos.y-= 100 * dt;
+			player.Camera->SetRotation(rot);
+			player.Camera->SetPosition(player.SpaceShip->GetPosition() + player.SpaceShip->GetForward() * 800 + player.SpaceShip->GetUp() * 10);
 
-		if (key == 'd')
-			m_CameraPos.x-= 100 * dt;
-		if (key == 'a')
-			m_CameraPos.x+= 100 * dt;
 
-		if (key == 'q')
-			m_CameraPos.z-= 100 * dt;
+			Core::Renderer::SetViewport(player.Viewport);
+			Core::Renderer::Begin(player.Camera);
 
-		if (key == 'e')
-			m_CameraPos.z+= 100 * dt;
+			// Draw objects
+			for (auto& obj : m_Objects)
+				obj->Draw();
 
-		if (key == 'z')
-			m_CameraRot.y-= 10 * dt;
-		if(key == 'c')
-			m_CameraRot.y+= 10 * dt;
-
-		if (key == 'r')
-			m_CameraRot.x-= 100 * dt;
-		if (key == 'f')
-			m_CameraRot.x+= 100 * dt;
-
-		m_Controller->KeyPressedEvent(key);
-	}
-
-	void Game::KeyReleased(char key)
-	{
-		m_Controller->KeyReleasedEvent(key);
-	}
-
-	void Game::MouseMoved(int x, int y)
-	{
-		m_Controller->MouseMovedEvent(x, y);
-	}
-
-	void Game::MouseDragged(int x, int y, int button)
-	{
-	}
-
-	void Game::MousePressed(int x, int y, int button)
-	{
-	}
-
-	void Game::MouseReleased(int x, int y, int button)
-	{
-	}
-
-	void Game::MouseEntered(int x, int y)
-	{
-		m_Controller->ResetAcceleration();
+			Core::Renderer::End();
+		}
 	}
 }

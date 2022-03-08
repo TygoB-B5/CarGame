@@ -58,8 +58,8 @@ namespace Input
 		virtual void MouseMovedEvent(int x, int y) override;
 
 		// Vectors //
-		virtual ofVec3f GetAcceleration() const override { return m_Acceleration; }
-		virtual ofVec3f GetOrientation() const override { return m_Orientation; }
+		virtual glm::vec3 GetAcceleration() const override { return m_Acceleration; }
+		virtual glm::vec3 GetOrientation() const override { return m_Orientation; }
 
 		// Buttons //
 		virtual bool IsProximity() override { return IsKeyPressed(PROX_BTN); }
@@ -71,10 +71,10 @@ namespace Input
 	private:
 		bool m_IsProximity = false;
 
-		ofVec3f m_Orientation;
+		glm::vec3 m_Orientation;
 
-		ofVec3f m_Acceleration;
-		ofVec3f m_OldAcceleration, m_NewAcceleration;
+		glm::vec3 m_Acceleration;
+		glm::vec3 m_OldAcceleration, m_NewAcceleration;
 
 		std::vector<char> m_PressedKeys;
 	};

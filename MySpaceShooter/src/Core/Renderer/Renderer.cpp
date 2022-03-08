@@ -7,6 +7,13 @@ namespace Core
 {
 	Renderer* Renderer::s_Renderer = new Renderer();
 
+	// STATIC METHODS
+	void Renderer::SetViewport(const ViewportParams& viewport)
+	{
+		s_Renderer->SetViewportImpl(viewport.X, viewport.Y, viewport.Width, viewport.Height);
+	}
+
+	// LOCAL METHODS
 	void Renderer::InitImpl()
 	{
 		glEnable(GL_DEPTH_TEST);
@@ -15,9 +22,14 @@ namespace Core
 		m_ViewPortCenter = { ofGetWidth() * 0.5f, ofGetHeight() * 0.5, 0, 0};
 	}
 
-	void Renderer::BeginImpl(const Camera& camera)
+	void Renderer::SetViewportImpl(int x, int y, int width, int height)
 	{
-		m_ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+		glViewport(x, y, width, height);
+	}
+
+	void Renderer::BeginImpl(const std::shared_ptr<Camera>& camera)
+	{
+		m_ViewProjectionMatrix = camera->GetViewProjectionMatrix();
 		glBegin(GL_QUADS);
 	}
 
@@ -39,10 +51,10 @@ namespace Core
 
 	void Renderer::DrawQuadFromPointsImpl(const glm::vec3& point1, const glm::vec3& point2, const glm::vec3& point3, const glm::vec3& point4, const glm::vec4& color)
 	{
-		glm::vec4 p1 = m_ViewPortCenter - m_ViewProjectionMatrix * glm::vec4(point1.x, point1.y, point1.z, -1);
-		glm::vec4 p2 = m_ViewPortCenter - m_ViewProjectionMatrix * glm::vec4(point2.x, point2.y, point2.z, -1);
-		glm::vec4 p3 = m_ViewPortCenter - m_ViewProjectionMatrix * glm::vec4(point3.x, point3.y, point3.z, -1);
-		glm::vec4 p4 = m_ViewPortCenter - m_ViewProjectionMatrix * glm::vec4(point4.x, point4.y, point4.z, -1);
+		glm::vec4 p1 = m_ViewPortCenter - (m_ViewProjectionMatrix * glm::vec4(point1.x, point1.y, point1.z, -1));
+		glm::vec4 p2 = m_ViewPortCenter - (m_ViewProjectionMatrix * glm::vec4(point2.x, point2.y, point2.z, -1));
+		glm::vec4 p3 = m_ViewPortCenter - (m_ViewProjectionMatrix * glm::vec4(point3.x, point3.y, point3.z, -1));
+		glm::vec4 p4 = m_ViewPortCenter - (m_ViewProjectionMatrix * glm::vec4(point4.x, point4.y, point4.z, -1));
 
 		glColor4f(color.r / 225., color.g / 225., color.b / 225., color.a / 225.);
 		glVertex3f(p1.x, p1.y, p1.z);

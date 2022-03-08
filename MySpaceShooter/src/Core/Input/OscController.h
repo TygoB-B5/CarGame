@@ -3,8 +3,7 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 #include "Controller.h"
-
-#define PORT 80
+#include "OscServer.h"
 
 #define ACC_MSG_NAME_X "/acc/x"
 #define ACC_MSG_NAME_Y "/acc/y"
@@ -21,25 +20,25 @@ namespace Input
 	class OscController : public Controller
 	{
 	public:
-		OscController();
+		friend class OscServer;
 
-		virtual void Setup() override;
-		virtual void Poll() override;
-		virtual ofVec3f GetAcceleration() const override { return m_Acceleration; };
-		virtual ofVec3f GetOrientation() const override { return m_Orientation; }
+		OscController(int playerIndex);
+
+		virtual glm::vec3 GetAcceleration() const override { return m_Acceleration; };
+		virtual glm::vec3 GetOrientation() const override { return m_Orientation; }
 		virtual bool IsProximity() override { return m_IsProximity; }
 
 	private:
-		void ProcessMessage(const ofxOscMessage& message);
+		void RecieveOscMessage(const ofxOscMessage& message);
 
 	private:
-		ofxOscReceiver m_Osc;
+		glm::vec3 m_Orientation;
 
-		ofVec3f m_Orientation;
-
-		ofVec3f m_Acceleration;
-		ofVec3f m_OldAcceleration;
+		glm::vec3 m_Acceleration;
+		glm::vec3 m_OldAcceleration;
 
 		bool m_IsProximity = false;
+		int m_PlayerIndex;
+		std::string m_PlayerIndexChar;
 	};
 }

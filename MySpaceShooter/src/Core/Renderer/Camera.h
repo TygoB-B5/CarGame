@@ -11,6 +11,8 @@ namespace Core
 
 		void SetRotation(const glm::vec3& rotation) { m_Rotation = rotation; CalculateViewProjectionMatrix(); }
 		void SetPosition(const glm::vec3& position) { m_Position = position; CalculateViewProjectionMatrix(); }
+		const glm::vec3& GetPosition() const { return m_Position; }
+		const glm::vec3& GetRotation() const { return m_Rotation; }
 
 		const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
 

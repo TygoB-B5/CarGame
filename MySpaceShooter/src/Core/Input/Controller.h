@@ -14,8 +14,8 @@ namespace Input
 		virtual void KeyReleasedEvent(char key) {}
 		virtual void MouseMovedEvent(int x, int y) {}
 
-		virtual ofVec3f GetAcceleration() const = 0;
-		virtual ofVec3f GetOrientation() const = 0;
+		virtual glm::vec3 GetAcceleration() const = 0;
+		virtual glm::vec3 GetOrientation() const = 0;
 		virtual bool IsProximity() = 0;
 
 	};
