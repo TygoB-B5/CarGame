@@ -226,10 +226,12 @@
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
     <ClCompile Include="src\Gameplay\SpaceShip.cpp" />
+    <ClCompile Include="src\Gameplay\VisibilityCube.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\Core.h" />
     <ClInclude Include="src\Core\Input\Controller.h" />
     <ClInclude Include="src\Core\Input\DebugController.h" />
     <ClInclude Include="src\Core\Input\OscController.h" />
@@ -282,7 +284,9 @@
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="src\Core\GameplayObject.h" />
     <ClInclude Include="src\Gameplay\SpaceShip.h" />
+    <ClInclude Include="src\Gameplay\VisibilityCube.h" />
     <ClInclude Include="src\ofApp.h" />
   </ItemGroup>
   <ItemGroup>

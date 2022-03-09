@@ -52,13 +52,12 @@ namespace Core
 	{
 	public:
 		Quad(const std::array<glm::vec3, 4>& positions, const glm::vec4& color)
-		{
-			m_Vertices = positions;
-			m_Color = color;
-		}
+			: m_Vertices(positions), m_Color(color)
+		{}
 
 		const std::array<glm::vec3, 4>& GetVertices() { return m_Vertices; }
-		const glm::vec4& GetColor() { return m_Color; }
+		const glm::vec4& GetColor() const { return m_Color; }
+		void SetColor(const glm::vec4& color) { m_Color = color; }
 
 	private:
 		std::array<glm::vec3, 4> m_Vertices;

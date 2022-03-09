@@ -1,8 +1,8 @@
 #pragma once
+#include "Core/Core.h"
 
-#include "ofMain.h"
-#include "Core/Object.h"
 #include "Gameplay/SpaceShip.h"
+#include "Gameplay/VisibilityCube.h"
 
 namespace Game
 {
@@ -23,6 +23,8 @@ namespace Game
 
 	private:
 		std::array<std::shared_ptr<SpaceShip>, 2> m_SpaceShips;
-		std::vector<std::shared_ptr<Core::Object>> m_RenderObjects;
+		std::array<std::shared_ptr<VisibilityCube>, 2> m_VisibilityCubes;
+
+		std::vector<std::shared_ptr<Core::Object>> m_GlobalRenderObjects;
 	};
 }

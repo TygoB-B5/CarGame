@@ -1,13 +1,11 @@
 #pragma once
 
 #include "glm/glm.hpp"
-#include "Core/Input/Controller.h"
-#include "Core/Renderer/Camera.h"
-#include "Core/Object.h"
+#include "Core/Core.h"
 
 namespace Game
 {
-	class SpaceShip
+	class SpaceShip : public Core::GameplayObject
 	{
 	public:
 		SpaceShip()
@@ -20,11 +18,11 @@ namespace Game
 
 		void Update();
 
-		void SetObject(const std::shared_ptr<Core::Object>& object) { m_Object = object; }
+		virtual void SetObject(const std::shared_ptr<Core::Object>& object) override { m_Object = object; }
+		virtual const std::shared_ptr<Core::Object>& GetObject() const override{ return m_Object; }
+
 		void SetCamera(const std::shared_ptr<Core::Camera>& camera) { m_Camera = camera; }
 		void SetController(const std::shared_ptr<Input::Controller>& controller) { m_Controller = controller; }
-
-		const std::shared_ptr<Core::Object>& GetObject() const { return m_Object; }
 		const std::shared_ptr<Core::Camera>& GetCamera() const { return m_Camera; }
 
 	private:

@@ -1,7 +1,7 @@
 #include "Renderer.h"
 #include "ofGLRenderer.h"
 #include "GLFW/glfw3.h"
-#include "glm/gtc/matrix_transform.hpp";
+#include "glm/gtc/matrix_transform.hpp"
 
 namespace Core
 {
@@ -19,8 +19,8 @@ namespace Core
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		m_ViewPortCenter = { ofGetWidth() * 0.5f, ofGetHeight() * 0.5, 0, 0};
 	}
