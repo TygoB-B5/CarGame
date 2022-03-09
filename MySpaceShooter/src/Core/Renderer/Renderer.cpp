@@ -19,6 +19,9 @@ namespace Core
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+
 		m_ViewPortCenter = { ofGetWidth() * 0.5f, ofGetHeight() * 0.5, 0, 0};
 	}
 

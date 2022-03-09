@@ -48,9 +48,10 @@ namespace Core
 
 			// Set Color Intensity
 			glm::vec4 col = quad.GetColor();
+			int alpha = col.a;
 			float multiplier = dot + ambientStrength <= 1 ? dot + ambientStrength : 1;
 			col *= multiplier;
-			col.a = 225;
+			col.a = alpha;
 
 			Core::Renderer::DrawQuadFromPoints(p1, p2, p3, p4, col);
 		}

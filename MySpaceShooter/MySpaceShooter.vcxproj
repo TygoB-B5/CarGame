@@ -100,7 +100,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\Vendor\OpenFramework\addons\ofxGui\src;..\Vendor\OpenFramework\addons\ofxNetwork\src;..\Vendor\OpenFramework\addons\ofxOsc\libs;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\posix;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\win32;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc;..\Vendor\OpenFramework\addons\ofxOsc\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories);..\Vendor\OpenFramework\addons\ofxGui\src;..\Vendor\OpenFramework\addons\ofxNetwork\src;..\Vendor\OpenFramework\addons\ofxOsc\libs;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\posix;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\win32;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc;..\Vendor\OpenFramework\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
@@ -122,7 +122,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\Vendor\OpenFramework\addons\ofxGui\src;..\Vendor\OpenFramework\addons\ofxNetwork\src;..\Vendor\OpenFramework\addons\ofxOsc\libs;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\posix;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\win32;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc;..\Vendor\OpenFramework\addons\ofxOsc\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories);..\Vendor\OpenFramework\addons\ofxGui\src;..\Vendor\OpenFramework\addons\ofxNetwork\src;..\Vendor\OpenFramework\addons\ofxOsc\libs;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\posix;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\win32;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc;..\Vendor\OpenFramework\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
@@ -144,7 +144,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\Vendor\OpenFramework\addons\ofxGui\src;..\Vendor\OpenFramework\addons\ofxNetwork\src;..\Vendor\OpenFramework\addons\ofxOsc\libs;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\posix;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\win32;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc;..\Vendor\OpenFramework\addons\ofxOsc\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories);..\Vendor\OpenFramework\addons\ofxGui\src;..\Vendor\OpenFramework\addons\ofxNetwork\src;..\Vendor\OpenFramework\addons\ofxOsc\libs;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\posix;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\win32;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc;..\Vendor\OpenFramework\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
@@ -169,7 +169,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\Vendor\OpenFramework\addons\ofxGui\src;..\Vendor\OpenFramework\addons\ofxNetwork\src;..\Vendor\OpenFramework\addons\ofxOsc\libs;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\posix;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\win32;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc;..\Vendor\OpenFramework\addons\ofxOsc\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories);..\Vendor\OpenFramework\addons\ofxGui\src;..\Vendor\OpenFramework\addons\ofxNetwork\src;..\Vendor\OpenFramework\addons\ofxOsc\libs;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\posix;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\ip\win32;..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc;..\Vendor\OpenFramework\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
@@ -225,6 +225,7 @@
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="src\Gameplay\SpaceShip.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
@@ -238,6 +239,7 @@
     <ClInclude Include="src\Core\Random.h" />
     <ClInclude Include="src\Core\Renderer\Camera.h" />
     <ClInclude Include="src\Core\Renderer\Renderer.h" />
+    <ClInclude Include="src\Core\Renderer\ViewportParams.h" />
     <ClInclude Include="src\Core\Time.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxGui\src\ofxBaseGui.h" />
@@ -280,6 +282,7 @@
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="src\Gameplay\SpaceShip.h" />
     <ClInclude Include="src\ofApp.h" />
   </ItemGroup>
   <ItemGroup>

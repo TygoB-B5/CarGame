@@ -1,6 +1,12 @@
 #include "Game.h"
+#include "Core/Time.h"
+#include "Core/Input/OscController.h"
+#include "Core/Renderer/Camera.h"
+#include "Core/Renderer/ViewportParams.h"
+#include "Core/Renderer/Renderer.h"
+#include "Core/ModelLoader.h"
 
-namespace CarGame
+namespace Game
 {
 	void Game::Setup()
 	{
@@ -10,25 +16,20 @@ namespace CarGame
 		// Craete and assign Spaceship objects
 		std::shared_ptr<Core::Object> spec1 = std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/spaceship1.txt"));
 		std::shared_ptr<Core::Object> spec2 = std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/spaceship2.txt"));
-		spec1->SetScale({ 3.0f, 3.0f, 3.0f });
-		spec2->SetScale({ 3.0f, 3.0f, 3.0f });
-		// Assign player data
-		m_Players[0] = PlayerParams(0,
-			std::make_shared<Input::OscController>(0),
-			std::make_shared<Core::Camera>(50, ((float)ofGetWidth() / 2) / (float)ofGetHeight(), 0.01f, 10000),
-			spec2,
-			Core::ViewportParams(0, 0, (float)ofGetWidth() / 2, (float)ofGetHeight()));
 
-		m_Players[1] = PlayerParams(1,
-			std::make_shared<Input::OscController>(1),
-			std::make_shared<Core::Camera>(60, ((float)ofGetWidth() / 2) / (float)ofGetHeight(), 0.01f, 10000),
-			spec1,
-			Core::ViewportParams((float)ofGetWidth() / 2, 0, (float)ofGetWidth() / 2, (float)ofGetHeight()));
+		// Assign SpaceShip data
+		m_SpaceShips[0] = std::make_shared<SpaceShip>();
+		m_SpaceShips[0]->SetCamera(std::make_shared<Core::Camera>(60, ((float)ofGetWidth() / 4) / (float)ofGetHeight(), 0.01f, 10000, Core::ViewportParams(0, 0, (float)ofGetWidth() / 2, (float)ofGetHeight())));
+		m_SpaceShips[0]->SetObject(std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/spaceship1.txt")));
+		m_SpaceShips[0]->SetController(std::make_shared<Input::OscController>(0));
+		
+		m_SpaceShips[1] = std::make_shared<SpaceShip>();
+		m_SpaceShips[1]->SetCamera(std::make_shared<Core::Camera>(60, ((float)ofGetWidth() / 4) / (float)ofGetHeight(), 0.01f, 10000, Core::ViewportParams((float)ofGetWidth() / 2, 0, (float)ofGetWidth() / 2, (float)ofGetHeight())));
+		m_SpaceShips[1]->SetObject(std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/spaceship2.txt")));
+		m_SpaceShips[1]->SetController(std::make_shared<Input::OscController>(1));
 
-		// Create floor object & Push objects to Render list
-		m_Objects.push_back(std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/floor.txt")));
-		m_Objects.push_back(spec2);
-		m_Objects.push_back(spec1);
+		m_RenderObjects.push_back(m_SpaceShips[0]->GetObject());
+		m_RenderObjects.push_back(m_SpaceShips[1]->GetObject());
 	}
 
 	void Game::Update()
@@ -40,36 +41,16 @@ namespace CarGame
 
 	void Game::Draw()
 	{
-		Core::Renderer::Clear(glm::vec4(153, 255, 225, 225));
+		Core::Renderer::Clear(glm::vec4(27, 16, 101,  225));
 
 		// Loop through all players
-		for (auto& player : m_Players)
+		for (auto& ship : m_SpaceShips)
 		{
+			ship->Update();
+			Core::Renderer::SetViewport(ship->GetCamera()->GetViewport());
+			Core::Renderer::Begin(ship->GetCamera());
 
-			// Calculate Rotation with deadzone
-			Input::Controller* cont = player.Controller.get();
-			glm::vec3 rotation =
-				glm::length(glm::vec3(cont->GetOrientation().z, -cont->GetOrientation().x, 0)) > 5 ?
-				glm::vec3(cont->GetOrientation().z, -cont->GetOrientation().x, 0) : glm::vec3(0, 0, 0);
-
-			// Update spaceship position and rotation
-			player.SpaceShip->Rotate(rotation * Core::Time::GetDeltaTime());
-			player.SpaceShip->Translate(player.SpaceShip->GetForward() * Core::Time::GetDeltaTime() * 250);
-
-			// Update camera position and rotation
-			glm::vec3 rot = player.SpaceShip->GetRotation();
-			rot.y += 180;
-			rot.x = -rot.x;
-
-			player.Camera->SetRotation(rot);
-			player.Camera->SetPosition(player.SpaceShip->GetPosition() + player.SpaceShip->GetForward() * 800 + player.SpaceShip->GetUp() * 10);
-
-
-			Core::Renderer::SetViewport(player.Viewport);
-			Core::Renderer::Begin(player.Camera);
-
-			// Draw objects
-			for (auto& obj : m_Objects)
+			for (auto& obj : m_RenderObjects)
 				obj->Draw();
 
 			Core::Renderer::End();

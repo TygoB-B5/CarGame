@@ -2,8 +2,8 @@
 
 namespace Core
 {
-	Camera::Camera(float fov, float aspectRatio, float near, float far)
-		: m_Fov(fov), m_AspectRatio(aspectRatio), m_Near(near), m_Far(far), 
+	Camera::Camera(float fov, float aspectRatio, float near, float far, ViewportParams viewport)
+		: m_Fov(fov), m_AspectRatio(aspectRatio), m_Near(near), m_Far(far), m_Viewport(viewport),
 		m_ProjectionMatrix(glm::perspective(glm::radians(fov), aspectRatio, near, far))
 	{
 		CalculateViewProjectionMatrix();

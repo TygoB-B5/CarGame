@@ -30,10 +30,10 @@ namespace Core
 
 		void Draw();
 
-	private:
+	protected:
 		void RecalculateModelMatrix();
 
-	private:
+	protected:
 		glm::vec3 m_Position = { 0, 0, 0 };
 		glm::vec3 m_Rotation = { 0, 0, 0 };
 		glm::vec3 m_Scale = { 1, 1, 1 };

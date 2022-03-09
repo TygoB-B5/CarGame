@@ -2,8 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
-#include "Controller.h"
 #include "OscServer.h"
+#include "Controller.h"
 
 #define ACC_MSG_NAME_X "/acc/x"
 #define ACC_MSG_NAME_Y "/acc/y"

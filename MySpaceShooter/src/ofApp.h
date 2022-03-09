@@ -23,5 +23,5 @@ class ofApp : public ofBaseApp
 		void gotMessage(ofMessage msg) {};
 
 private:
-	CarGame::Game m_Game;
+	Game::Game m_Game;
 };
