@@ -3,6 +3,11 @@
 #include "glm/glm.hpp"
 #include "Core/Core.h"
 
+#define PLAYFIELD_SIZE 2000
+#define SPACESHIP_SPEED 150
+
+#define DEADZONE 5
+
 namespace Game
 {
 	class SpaceShip : public Core::GameplayObject
@@ -27,7 +32,8 @@ namespace Game
 
 	private:
 		const glm::vec3& GetControllerInput();
-		void UpdateSpaceShipPose();
+		void UpdateSpaceShipRotation();
+		void UpdateSpaceShipPosition();
 		void UpdateCameraPose();
 
 	private:

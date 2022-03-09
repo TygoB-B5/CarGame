@@ -19,6 +19,9 @@ namespace Game
 		m_SpaceShips[1]->SetObject(std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/spaceship2.txt")));
 		m_SpaceShips[1]->SetController(std::make_shared<Input::OscController>(1));
 
+		//Rotate Spaceship in the opposite direction
+		m_SpaceShips[1]->GetObject()->SetRotation({ 0, 180, 0 });
+
 		// Create VisibilityCubes
 		m_VisibilityCubes[0] = std::make_shared<VisibilityCube>();
 		m_VisibilityCubes[0]->SetObject(std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/cube.txt")));
@@ -32,11 +35,12 @@ namespace Game
 
 
 		// Add cubes with Random positions and sizes to Rendering Stack
-		for (size_t i = 0; i < 500; i++)
+		for (size_t i = 0; i < 1000; i++)
 		{
 			auto obj = std::make_shared<Core::Object>(Core::ModelLoader::Load("../Assets/star.txt"));
-			obj->SetPosition(glm::vec3(Core::Random::Range(-1000, 1000), Core::Random::Range(-1000, 1000), Core::Random::Range(-1000, 1000)));
-			obj->SetScale(glm::vec3(Core::Random::Range(5, 10), Core::Random::Range(5, 10), Core::Random::Range(2, 15)));
+			obj->SetPosition(glm::vec3(Core::Random::Range(-PLAYFIELD_SIZE, PLAYFIELD_SIZE), Core::Random::Range(-PLAYFIELD_SIZE, PLAYFIELD_SIZE), Core::Random::Range(-PLAYFIELD_SIZE, PLAYFIELD_SIZE)));
+			obj->SetScale(glm::vec3(Core::Random::Range(5, 10), Core::Random::Range(5, 10), Core::Random::Range(5, 10)));
+			obj->SetRotation(glm::vec3(Core::Random::Range(-180, 180), Core::Random::Range(-180, 180), Core::Random::Range(-180, 180)));
 			m_GlobalRenderObjects.push_back(obj);
 		}
 	}
@@ -45,23 +49,28 @@ namespace Game
 	{
 		Core::Time::Tick();
 		Input::OscServer::Update();
+
+
+		// Update Logic
+		for (size_t i = 0; i < 2; i++)
+		{
+			float dist = glm::distance(m_SpaceShips[0]->GetObject()->GetPosition(), m_SpaceShips[1]->GetObject()->GetPosition());
+			m_VisibilityCubes[i]->SetSize(dist * pow(0.1f, 2));
+			m_VisibilityCubes[i]->GetObject()->SetPosition(m_SpaceShips[i]->GetObject()->GetPosition());
+
+			m_SpaceShips[i]->Update();
+		}
 	}
 
 	void Game::Draw()
 	{
-		Core::Renderer::Clear(glm::vec4(27, 16, 101,  225));
+		Core::Renderer::Clear(glm::vec4(7, 0, 51,  225));
 
+		// Render Objects
 		for (size_t i = 0; i < 2; i++)
 		{
-			auto& ship = m_SpaceShips[i];
-			float dist = glm::distance(m_SpaceShips[0]->GetObject()->GetPosition(), m_SpaceShips[1]->GetObject()->GetPosition());
-			m_VisibilityCubes[i]->SetSize(dist * pow(0.1f, 2));
-			m_VisibilityCubes[i]->GetObject()->SetPosition(ship->GetObject()->GetPosition());
-
-			ship->Update();
-
-			Core::Renderer::SetViewport(ship->GetCamera()->GetViewport());
-			Core::Renderer::Begin(ship->GetCamera());
+			Core::Renderer::SetViewport(m_SpaceShips[i]->GetCamera()->GetViewport());
+			Core::Renderer::Begin(m_SpaceShips[i]->GetCamera());
 
 			for (auto& obj : m_GlobalRenderObjects)
 				obj->Draw();
