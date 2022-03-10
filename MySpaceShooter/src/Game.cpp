@@ -33,7 +33,6 @@ namespace Game
 		m_GlobalRenderObjects.push_back(m_SpaceShips[0]->GetObject());
 		m_GlobalRenderObjects.push_back(m_SpaceShips[1]->GetObject());
 
-
 		// Add cubes with Random positions and sizes to Rendering Stack
 		for (size_t i = 0; i < 1000; i++)
 		{
@@ -54,6 +53,7 @@ namespace Game
 		// Update Logic
 		for (size_t i = 0; i < 2; i++)
 		{
+			// Set visibilitycube position and size
 			float dist = glm::distance(m_SpaceShips[0]->GetObject()->GetPosition(), m_SpaceShips[1]->GetObject()->GetPosition());
 			m_VisibilityCubes[i]->SetSize(dist * pow(0.1f, 2));
 			m_VisibilityCubes[i]->GetObject()->SetPosition(m_SpaceShips[i]->GetObject()->GetPosition());
@@ -72,8 +72,16 @@ namespace Game
 			Core::Renderer::SetViewport(m_SpaceShips[i]->GetCamera()->GetViewport());
 			Core::Renderer::Begin(m_SpaceShips[i]->GetCamera());
 
+			// Render global objects
 			for (auto& obj : m_GlobalRenderObjects)
 				obj->Draw();
+
+			// Render bullets
+			for (auto& ship : m_SpaceShips)
+			{
+				for (auto& bul : ship->GetBulletPool().GetObjects())
+					bul->Draw();
+			}
 
 			m_VisibilityCubes[i == 1 ? 0 : 1]->GetObject()->Draw();
 

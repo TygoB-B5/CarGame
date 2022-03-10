@@ -225,6 +225,7 @@
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
     <ClCompile Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="src\Gameplay\Bullet.cpp" />
     <ClCompile Include="src\Gameplay\SpaceShip.cpp" />
     <ClCompile Include="src\Gameplay\VisibilityCube.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -285,6 +286,7 @@
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
     <ClInclude Include="..\Vendor\OpenFramework\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
     <ClInclude Include="src\Core\GameplayObject.h" />
+    <ClInclude Include="src\Gameplay\Bullet.h" />
     <ClInclude Include="src\Gameplay\SpaceShip.h" />
     <ClInclude Include="src\Gameplay\VisibilityCube.h" />
     <ClInclude Include="src\ofApp.h" />

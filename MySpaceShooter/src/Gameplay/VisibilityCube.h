@@ -10,7 +10,7 @@ namespace Game
 		void SetSize(float size);
 
 		virtual void SetObject(const std::shared_ptr<Core::Object>& object) override { m_Object = object; }
-		virtual const std::shared_ptr<Core::Object>& GetObject() const override { return m_Object; }
+		virtual const std::shared_ptr<Core::Object>& GetObject() override { return m_Object; }
 
 	private:
 		std::shared_ptr<Core::Object> m_Object;
