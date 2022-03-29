@@ -16,6 +16,7 @@ namespace Input
             ofxOscMessage m;
             m_Osc.getNextMessage(m);
 
+            // Broadcast message to all OscControllers
             for (auto& controller : m_Controllers)
                 controller->RecieveOscMessage(m);
         }

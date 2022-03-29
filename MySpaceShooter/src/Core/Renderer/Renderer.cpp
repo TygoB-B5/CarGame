@@ -54,11 +54,13 @@ namespace Core
 
 	void Renderer::DrawQuadFromPointsImpl(const glm::vec3& point1, const glm::vec3& point2, const glm::vec3& point3, const glm::vec3& point4, const glm::vec4& color)
 	{
+		// Calculate Projection and allign it with the Center
 		glm::vec4 p1 = m_ViewPortCenter - (m_ViewProjectionMatrix * glm::vec4(point1.x, point1.y, point1.z, -1));
 		glm::vec4 p2 = m_ViewPortCenter - (m_ViewProjectionMatrix * glm::vec4(point2.x, point2.y, point2.z, -1));
 		glm::vec4 p3 = m_ViewPortCenter - (m_ViewProjectionMatrix * glm::vec4(point3.x, point3.y, point3.z, -1));
 		glm::vec4 p4 = m_ViewPortCenter - (m_ViewProjectionMatrix * glm::vec4(point4.x, point4.y, point4.z, -1));
 
+		// Draw the quad
 		glColor4f(color.r / 225., color.g / 225., color.b / 225., color.a / 225.);
 		glVertex3f(p1.x, p1.y, p1.z);
 		glVertex3f(p2.x, p2.y, p2.z);

@@ -68,6 +68,7 @@ namespace Input
 
 	void DebugController::KeyPressedEvent(char key)
 	{
+		// Add Key if it is not in the Key vector
 		if (std::find(m_PressedKeys.begin(), m_PressedKeys.end(), key) == m_PressedKeys.end())
 		{
 			m_PressedKeys.push_back(key);
@@ -76,6 +77,7 @@ namespace Input
 
 	void DebugController::KeyReleasedEvent(char key)
 	{
+		// Erase Released key from Key vector
 		m_PressedKeys.erase(std::remove(m_PressedKeys.begin(), m_PressedKeys.end(), key), m_PressedKeys.end());
 	}
 

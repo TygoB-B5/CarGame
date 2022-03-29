@@ -6,6 +6,7 @@ namespace Core
 
 	void Time::TickImpl()
 	{	
+		// Update Tick values
 		float currentTime = ofGetElapsedTimef();
 		float newTime = currentTime;
 		float frameTime = newTime - m_OldTime;
